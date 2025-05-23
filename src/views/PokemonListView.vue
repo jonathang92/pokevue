@@ -35,17 +35,18 @@ const filteredFavorites = computed(() => {
   )
 })
 
-const isListEmpty = computed(() => {
-  return (
-    !loading.value &&
-    (showFavoriteList.value ? filteredFavorites.value.length === 0 : pokemons.value.length === 0)
+const filteredPokemons = computed(() => {
+  return pokemons.value.filter((p) =>
+    p.name.toLowerCase().includes(searchValue.value.toLowerCase()),
   )
 })
 
-watch(searchValue, (newValue) => {
-  if (newValue.length > 0) {
-    showFavoriteList.value = true
-  }
+const isListEmpty = computed(() => {
+  return !loading.value && (filteredFavorites.value.length === 0 || pokemons.value.length === 0)
+})
+
+watch(showFavoriteList, () => {
+  searchValue.value = ''
 })
 
 watch(loading, (state) => {
@@ -98,7 +99,7 @@ onMounted(() => {
       <PokemonList v-if="showFavoriteList" :pokemons="filteredFavorites" />
       <PokemonList
         v-else
-        :pokemons="pokemons"
+        :pokemons="filteredPokemons"
         :loading="loading"
         :hasMore="hasMore"
         useInfiniteScroll

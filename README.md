@@ -1,6 +1,6 @@
 # PokeVue
 
-Pagina creada para probar mis conocimientos acerca de Vue3, implementando storages, routes, componentización y buenas practicas. Con información obtenida directamente de la [PokeAPI](https://pokeapi.co/).
+Página creada para probar mis conocimientos acerca de Vue3, implementando storages, routes, componentización y buenas prácticas. Con información obtenida directamente de la [PokeAPI](https://pokeapi.co/).
 
 **Demo en vivo:** [PokeVue](https://jonathang92.github.io/pokevue/)
 
@@ -20,11 +20,11 @@ Para la gestión de la lista de pokemons favoritos, escogí **Pinia**, usando la
 
 ### Persistencia de pokemons favoritos: Pinia Plugin Persistedstate
 
-Para asegurarme de que la lista de pokemons favoritos se mantenga después de cerrar o recargar la página, integré el plugin `pinia-plugin-persistedstate`, me pareció una forma mas elegante de persistir los datos (en este caso, en `localStorage`).
+Para asegurarme de que la lista de pokemons favoritos se mantenga después de cerrar o recargar la página, integré el plugin `pinia-plugin-persistedstate`, me pareció una forma más elegante de persistir los datos (en este caso, en `localStorage`).
 
 ### Rutas con Vue Router
 
-Implementé **Vue Router** desde la instalación. Una de las cosas interesantes de usarlo aparte de tener rutas predefinidas fue para que cada pokemon tuviera su **propia ruta dedicada** y asi permitirme compartir un enlace directo al detalle de un pokemon específico ya que al acceder a la ruta deberia abrir directamente el modal con el detalle de este.
+Implementé **Vue Router** desde la instalación. Una de las cosas interesantes de usarlo aparte de tener rutas predefinidas fue para que cada pokemon tuviera su **propia ruta dedicada** y así permitirme compartir un enlace directo al detalle de un pokemon específico ya que al acceder a la ruta debería abrir directamente el modal con el detalle de este.
 
 ### Funcionalidad de Compartir el pokemon
 
@@ -34,9 +34,9 @@ Para la funcionalidad de "Compartir", mi primera opción fue usar la **Web Share
 
 Ya que manejar el listado de pokemons implica una gran cantidad de datos implementé una lógica de **scroll infinito** para que a medida de que se desplace el contenido hasta el final se cargue automáticamente más pokemons a la misma, logrando un buen rendimiento y una buena experiencia de usuario al no tener que cargar todos los datos de golpe.
 
-### Buscador (solo en favoritos disponibles)
+### Buscador (para la lista de pokemons existente y favoritos)
 
-A pesar de que el diseño contempla un buscador y que la PokeAPI no tiene una api para eso, implementé el buscador para que filtrara la lista de los pokemons favoritos del usuario y asi no quedara como un simple elemento visual.
+A pesar de que el diseño contempla un buscador y que la PokeAPI no tiene un endpoint para buscar pokemons por nombre, decidí implementar un buscador para que filtre la lista de pokemons y los favoritos del usuario y así no quede como un simple elemento visual.
 
 ## Características de la aplicación
 
@@ -45,7 +45,7 @@ A pesar de que el diseño contempla un buscador y que la PokeAPI no tiene una ap
 - Scroll infinito para cargar más pokemons.
 - Modal con detalles específicos de cada pokemon (peso, altura, tipos, imagen).
 - Sistema para marcar y desmarcar pokemons como favoritos.
-- Buscador en la lista de favoritos.
+- Buscador en la lista de pokemons y favoritos.
 - Persistencia de la lista de favoritos.
 - Funcionalidad para compartir los detalles de pokemon (con Web Share API o copiando enlace).
 - Rutas dedicadas para cada detalle de pokemon.

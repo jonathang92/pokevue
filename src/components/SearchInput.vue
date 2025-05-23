@@ -12,6 +12,7 @@ const handleInput = (event: Event): void => {
     <span class="material-symbols-rounded">search</span>
 
     <input
+      :value="modelValue"
       @input="handleInput"
       type="text"
       class="search-input"
