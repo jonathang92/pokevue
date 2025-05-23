@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, defineProps, defineEmits, ref } from 'vue'
+import { onMounted, onUnmounted, defineProps, defineEmits, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import PokemonCard from './PokemonCard.vue'
 import type { PokemonListItem } from '@/interfaces/pokemons'
@@ -36,6 +36,20 @@ const handleScroll = () => {
 const handleCardClick = (pokemon: PokemonListItem) => {
   router.push({ name: 'PokemonList', params: { pokemonName: pokemon.name } })
 }
+
+// to prevent scroll if useInfiniteScroll changes state after render
+watch(
+  () => props.useInfiniteScroll,
+  (isActive, wasActive) => {
+    if (pokemonList.value) {
+      if (isActive && !wasActive) {
+        pokemonList.value.addEventListener('scroll', handleScroll)
+      } else if (!isActive && wasActive) {
+        pokemonList.value.removeEventListener('scroll', handleScroll)
+      }
+    }
+  },
+)
 
 onUnmounted(() => {
   if (props.useInfiniteScroll && pokemonList.value) {

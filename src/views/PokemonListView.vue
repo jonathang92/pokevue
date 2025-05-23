@@ -29,20 +29,26 @@ const selectedPokemon = ref<PokemonDetailModal | null>(null)
 
 const detailModal = ref<InstanceType<typeof DetailModal> | null>(null)
 
-const filteredFavorites = computed(() => {
-  return favoritesStore.favorites.filter((p) =>
+const filteredFavorites = computed(() =>
+  favoritesStore.favorites.filter((p) =>
     p.name.toLowerCase().includes(searchValue.value.toLowerCase()),
-  )
-})
+  ),
+)
 
-const filteredPokemons = computed(() => {
-  return pokemons.value.filter((p) =>
-    p.name.toLowerCase().includes(searchValue.value.toLowerCase()),
-  )
-})
+const filteredPokemons = computed(() =>
+  pokemons.value.filter((p) => p.name.toLowerCase().includes(searchValue.value.toLowerCase())),
+)
+
+const filterActive = computed(() => searchValue.value.length === 0)
 
 const isListEmpty = computed(() => {
-  return !loading.value && (filteredFavorites.value.length === 0 || pokemons.value.length === 0)
+  if (loading.value) {
+    return false
+  }
+  if (showFavoriteList.value) {
+    return filteredFavorites.value.length === 0
+  }
+  return filteredPokemons.value.length === 0
 })
 
 watch(showFavoriteList, () => {
@@ -102,7 +108,7 @@ onMounted(() => {
         :pokemons="filteredPokemons"
         :loading="loading"
         :hasMore="hasMore"
-        useInfiniteScroll
+        :useInfiniteScroll="filterActive"
         @load-more="loadMore"
       />
     </template>
