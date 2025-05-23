@@ -1,0 +1,13 @@
+:root {
+  --poke-color-gold: #eca539;
+  --poke-color-red-dark: #c00e20;
+  --poke-color-red-bright: #f22539;
+  --poke-color-grey-darkest: #353535;
+  --poke-color-grey-dark: #5e5e5e;
+  --poke-color-grey-medium: #bfbfbf;
+  --poke-color-grey-medium-light: #e8e8e8;
+  --poke-color-grey-light: #f5f5f5;
+  --poke-color-grey-lightest: #f9f9f9;
+  --poke-color-base-white: #ffffff;
+  --poke-color-base-black: #000000;
+}
