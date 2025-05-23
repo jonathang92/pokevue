@@ -2,7 +2,7 @@
 
 Pagina creada para probar mis conocimientos acerca de Vue3, implementando storages, routes, componentización y buenas practicas. Con información obtenida directamente de la [PokeAPI](https://pokeapi.co/).
 
-**Demo en vivo:** [PokeVue](#)
+**Demo en vivo:** [PokeVue](https://jonathang92.github.io/pokevue/)
 
 ## Tecnologías usadas y Decisiones tomadas para el desarrollo
 
